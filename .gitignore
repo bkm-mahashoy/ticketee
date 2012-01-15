@@ -1,0 +1,15 @@
+# http://help.github.com/ignore-files/ for more about ignoring files.
+#
+# Add a global ignore:
+#   git config --global core.excludesfile ~/.gitignore_global
+#
+
+/.bundle
+/db/*.sqlite3
+/log/*.log
+/tmp
+/**/*~
+/misc/**/*
+/**/*.log
+/doc/api
+/doc/app
