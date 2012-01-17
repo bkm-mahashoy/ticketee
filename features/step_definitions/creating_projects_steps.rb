@@ -15,6 +15,10 @@ When /^I click the "([^"]*)" button$/ do |button|
   click_button(button)
 end
 
+When /^I press the "([^"]*)" button$/ do |button|
+  click_button(button)
+end
+
 Then /^I should see the "([^"]*)" message$/ do |text|
   if page.respond_to? :should
     page.should have_content(text)

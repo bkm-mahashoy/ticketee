@@ -3,6 +3,8 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.3'
 gem 'sqlite3'
 gem 'jquery-rails'
+gem 'dynamic_form'
+
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :assets do
