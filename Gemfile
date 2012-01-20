@@ -5,7 +5,7 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem 'dynamic_form'
 
-# gem 'ruby-debug19', :require => 'ruby-debug'
+# gem 'ruby-debug19x', :require => 'ruby-debug'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.5'
@@ -24,4 +24,5 @@ group :test do
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'factory_girl'
 end
