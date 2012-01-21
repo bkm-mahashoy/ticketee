@@ -31,4 +31,20 @@ class ProjectsController < ApplicationController
       format.json { render json: @project }
     end
   end
+
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    @project = Project.find(params[:id])
+
+    if @project.update_attributes(params[:project])
+      flash[:notice] = "Project has been successfully updated."
+      redirect_to @project
+    else
+      flash[:alert] = "Project has not been updated."
+      render action: :edit
+    end
+  end
 end
