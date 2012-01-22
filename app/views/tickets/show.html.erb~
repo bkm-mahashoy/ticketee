@@ -1,3 +1,0 @@
-<div id="ticket">
-  <h3><%= @ticket.title %></h3>
-</div>
