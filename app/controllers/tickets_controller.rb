@@ -1,7 +1,7 @@
 class TicketsController < ApplicationController
 
-  before_filter :find_project, only: [:new, :create, :show, :edit, :update]
-  before_filter :find_ticket, only: [:show, :edit, :update]
+  before_filter :find_project
+  before_filter :find_ticket, only: [:show, :edit, :update, :destroy]
 
   def new
     @ticket = @project.tickets.build
@@ -34,6 +34,13 @@ class TicketsController < ApplicationController
       render action: :edit
     end
   end
+
+  def destroy
+    @ticket.destroy
+    flash[:notice] = "Ticket has been successfully deleted."
+    redirect_to @project
+  end
+
   private
 
   def find_project
