@@ -4,6 +4,7 @@ gem 'rails', '3.1.3'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'dynamic_form'
+gem 'devise'
 
 # gem 'ruby-debug19x', :require => 'ruby-debug'
 
