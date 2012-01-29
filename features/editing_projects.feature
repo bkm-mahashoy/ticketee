@@ -3,6 +3,11 @@ Feature: Editing Projects
   As an user, I want an user interface which provides this functionality
 
   Background: Updating a Project
+    Given there are the following users:
+      | email              | password | admin |
+      | admin@ticketee.com | password | true  |
+    And I am signed in as one of those users
+
     Given there is a project called "TextMate 2"
     And I am on the Home page
     When I follow the "TextMate 2" link
