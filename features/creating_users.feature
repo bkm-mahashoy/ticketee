@@ -24,3 +24,11 @@ Feature: Creating Users
     And I click the "Create User" button
     Then I should see the "User has not been created." message
     And I should see "Email can't be blank"
+
+  Scenario: Creating an Admin user
+    And I fill in the "Email" field with "newadmin@ticketee.com"
+    And I fill in the "Password" field with "password"
+    And I check the "Admin" checkbox
+    And I press the "Create User" button
+    Then I should see the "User has been successfully created." message
+    And I should see "newadmin@ticketee.com (Admin)"
