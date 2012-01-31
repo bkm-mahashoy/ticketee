@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
 
-  before_filter :find_user, only: [:show, :edit, :update]
+  before_filter :find_user, only: [:show, :edit, :update, :destroy]
 
   def index
     @users = User.all(order: :email)
@@ -43,6 +43,17 @@ class Admin::UsersController < Admin::BaseController
     else
       flash[:alert] = "User has not been updated."
       render action: :edit
+    end
+  end
+
+  def destroy
+    if @user == current_user
+      flash[:alert] = "You cannot delete yourself - invalid action."
+      render action: :show
+    else
+      @user.destroy
+      flash[:notice] = "User has been successfully deleted."
+      redirect_to admin_users_path
     end
   end
 
