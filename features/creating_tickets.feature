@@ -1,21 +1,18 @@
 Feature: Creating Tickets
   In order to create tickets for projects
-  As a user, I want to be able to select a project and ...
+  As a user
+  I want to be able to select a project and do that
 
   Background:
     Given there is a project called "Internet Explorer"
-    And I am on the Home page
     And there are the following users:
       | email             | password |
       | user@ticketee.com | password |
+    And "user@ticketee.com" can view the "Internet Explorer" project
+    And I am signed in as one of those users    
+    And I am on the Home page
     When I follow the "Internet Explorer" link
     And I follow the "New Ticket" link
-    Then I should see "You need to sign in or sign up before continuing."
-    When I fill in the "Email" field with "user@ticketee.com"
-    And I fill in the "Password" field with "password"
-    And I press the "Sign in" button
-    Then I should see the "New Ticket" message
-
 
   Scenario: Creating a ticket
     When I fill in "Title" with "Standards Compliance"
