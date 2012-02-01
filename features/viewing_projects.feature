@@ -9,9 +9,11 @@ Feature: Viewing Projects
       | user@ticketee.com | password |
     And I am signed in as one of those users
     And there is a project called "TextMate 2"
+    And there is a project called "Internet Explorer"
     And "user@ticketee.com" can view the "TextMate 2" project
 
   Scenario: Listing all projects
     And I am on the Home page
+    Then I should not see "Internet Explorer"
     When I follow the "TextMate 2" link
     Then I should be on the "TextMate 2" project page
