@@ -5,6 +5,7 @@ gem 'sqlite3'
 gem 'jquery-rails'
 gem 'dynamic_form'
 gem 'devise'
+gem 'cancan'
 
 # gem 'ruby-debug19x', :require => 'ruby-debug'
 
