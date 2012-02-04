@@ -14,6 +14,14 @@ Given /^"([^"]*)" can delete tickets for the "([^"]*)" project$/ do |user, proje
   create_permission(user, find_project(project), "delete ticket")
 end
 
+When /^I check the "([^"]*)" checkbox for the "([^"]*)" project$/ do |permission, project_name|
+  project = Project.find_by_name!(project_name)
+  permission = permission.downcase.gsub(" ", "_")
+  field_id = "permissions_#{project.id}_#{permission}"
+  steps(%Q{ When I check the "#{field_id}" checkbox })
+end
+
+
 def create_permission(email, object, action)
   Permission.create!(user: User.find_by_email!(email),
                      thing: object,
