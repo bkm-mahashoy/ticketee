@@ -24,3 +24,7 @@ Then /^I should not see "([^"]*)" within "([^"]*)"$/ do |text, parent|
     end
   end
 end
+
+When /^I attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
+  attach_file(field, File.expand_path(path))
+end

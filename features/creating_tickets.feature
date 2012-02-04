@@ -19,7 +19,7 @@ Feature: Creating Tickets
     When I fill in "Title" with "Standards Compliance"
     And I fill in "Description" with "... pages do not conform to UI standards."
     And I press the "Create Ticket" button
-    Then I should see "Ticket has been successfully created"
+    Then I should see "Ticket has been successfully created."
     Then I should see "Created by user@ticketee.com"
 
   Scenario: Creating a ticket without valid attributes fails
@@ -34,3 +34,11 @@ Feature: Creating Tickets
     And I press the "Create Ticket" button
     Then I should see "Ticket has not been created."
     And I should see "Description is too short (minimum is 10 characters)"
+
+  Scenario: Creating a ticket with an attachment
+    When I fill in "Title" with "Add documentation for a blink tag"
+    And I fill in "Description" with "The blink tag has a speed attribute"
+    And I attach the file "spec/fixtures/speed.txt" to "File"
+    And I press the "Create Ticket" button
+    Then I should see "Ticket has been successfully created."
+    And I should see "speed.txt" within "#ticket .assets"
