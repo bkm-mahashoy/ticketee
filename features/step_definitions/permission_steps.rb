@@ -17,10 +17,10 @@ end
 When /^I check the "([^"]*)" checkbox for the "([^"]*)" project$/ do |permission, project_name|
   project = Project.find_by_name!(project_name)
   permission = permission.downcase.gsub(" ", "_")
+  permission = permission[-1..-1] == "s" ? permission[0..-2] : permission
   field_id = "permissions_#{project.id}_#{permission}"
   steps(%Q{ When I check the "#{field_id}" checkbox })
 end
-
 
 def create_permission(email, object, action)
   Permission.create!(user: User.find_by_email!(email),
