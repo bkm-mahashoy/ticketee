@@ -7,9 +7,10 @@
 /.bundle
 /db/*.sqlite3
 /log/*.log
-/tmp
+/tmp/**/*
 /**/*~
 /misc/**/*
 /**/*.log
 /doc/api
 /doc/app
+/public/system
