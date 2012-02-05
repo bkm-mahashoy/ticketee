@@ -13,10 +13,15 @@
     <%= f.text_area :description %>
   </p>
 
-  <p>
-    <%= f.label :asset, "File" %>
-    <%= f.file_field :asset %>
-  </p>
+  <% file_number = 0 %>
+  <div id="files">
+    <%= f.fields_for :assets do |asset| %>
+      <p>
+	<%= asset.label :asset, "File ##{file_number += 1}" %>
+	<%= asset.file_field :asset %>
+      </p>
+    <% end %>
+  </div>
 
   <%= f.submit %>
 <% end %>

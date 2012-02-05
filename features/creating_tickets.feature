@@ -35,10 +35,14 @@ Feature: Creating Tickets
     Then I should see "Ticket has not been created."
     And I should see "Description is too short (minimum is 10 characters)"
 
-  Scenario: Creating a ticket with an attachment
+  Scenario: Creating a ticket with multiple attachments
     When I fill in "Title" with "Add documentation for a blink tag"
     And I fill in "Description" with "The blink tag has a speed attribute"
-    And I attach the file "spec/fixtures/speed.txt" to "File"
+    And I attach the file "spec/fixtures/speed.txt" to "File #1"
+    And I attach the file "spec/fixtures/spin.txt" to "File #2"
+    And I attach the file "spec/fixtures/gradient.txt" to "File #3"
     And I press the "Create Ticket" button
     Then I should see "Ticket has been successfully created."
     And I should see "speed.txt" within "#ticket .assets"
+    And I should see "spin.txt" within "#ticket .assets"
+    And I should see "gradient.txt" within "#ticket .assets"
