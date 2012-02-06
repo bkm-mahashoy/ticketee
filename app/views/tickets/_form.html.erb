@@ -15,7 +15,7 @@
 
   <% file_number = 0 %>
   <div id="files">
-    <%= f.fields_for :assets do |asset| %>
+    <%= f.fields_for :assets, child_index: file_number do |asset| %>
       <p>
 	<%= asset.label :asset, "File ##{file_number += 1}" %>
 	<%= asset.file_field :asset %>
@@ -23,5 +23,6 @@
     <% end %>
   </div>
 
+  <%= link_to "Add another file", 'javascript:', id: "add_another_file" %>
   <%= f.submit %>
 <% end %>

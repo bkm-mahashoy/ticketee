@@ -2,6 +2,14 @@ class FilesController < ApplicationController
 
   before_filter :authenticate_user!
 
+  def new
+    @ticket = Ticket.new
+    asset = @ticket.assets.build
+    render partial: "files/form",
+           locals: { file_number: params[:file_number].to_i,
+                     asset: asset }
+  end
+
   def show
     asset = Asset.find(params[:id])
 

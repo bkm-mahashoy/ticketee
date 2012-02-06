@@ -1,0 +1,8 @@
+<%= fields_for @ticket do |f| %>
+  <%= f.fields_for :assets, child_index: file_number do |asset| %>
+    <p>
+      <%= asset.label :asset, "File ##{file_number += 1}" %>
+      <%= asset.file_field :asset %>
+    </p>
+  <% end %>
+<% end %>
