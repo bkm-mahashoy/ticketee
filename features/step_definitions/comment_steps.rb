@@ -7,3 +7,7 @@ Given /^(.*) within "([^"]*)"$/ do |step, parent|
     step "#{step}"
   end
 end
+
+When /^I select "([^"]*)" from the "([^"]*)" drop down list$/ do |value, field|
+  select(value, from: field)
+end

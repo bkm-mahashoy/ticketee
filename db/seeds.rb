@@ -4,3 +4,7 @@ admin_user.admin = true
 admin_user.confirm!
 
 Project.create(name: "Ticketee Beta")
+
+State.create(name: "New", color: "white", background: "85FF00")
+State.create(name: "Open", color: "white", background: "#00CFFD")
+State.create(name: "Closed", color: "white", background: "black")
