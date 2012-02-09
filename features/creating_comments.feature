@@ -37,3 +37,4 @@ Feature: Creating comments
     And I press the "Create Comment" button
     Then I should see the "Comment has been successfully created." message
     And I should see "Open" within "#ticket .state"
+    And I should see "State: Open" within "#comments"
