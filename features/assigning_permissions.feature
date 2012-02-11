@@ -17,6 +17,7 @@ Feature: Assigning Permissions
     And "user@ticketee.com" has created a ticket for this project:
       | title          | description                   |
       | Make it shiny! | Gradients! Starbursts! Oh my! |
+    And there is a state called "Open"
 
     When I follow the "Admin" link
     And I follow the "Users" link
@@ -70,3 +71,19 @@ Feature: Assigning Permissions
     And I follow the "Make it shiny!" link
     And I follow the "Delete Ticket" link
     Then I should see the "Ticket has been successfully deleted." message
+
+  Scenario: Changing states for a ticket
+    When I check the "View" checkbox for the "TextMate 2" project
+    And I check the "Change States" checkbox for the "TextMate 2" project
+    And I press the "Update Permissions" button
+    And I follow the "Sign Out" link
+
+    Given I am signed in as "user@ticketee.com"
+    When I follow the "TextMate 2" link
+    And I follow the "Make it shiny!" link
+    And I fill in "Text" with "Opening this ticket."
+    And I select "Open" from the "State" drop down list
+    And I press the "Create Comment" button
+    Then I should see the "Comment has been successfully created." message
+    And I should see "Open" within "#ticket .state"
+    And I should see "State: Open" within "#comments"

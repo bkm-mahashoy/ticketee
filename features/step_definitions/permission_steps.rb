@@ -14,6 +14,10 @@ Given /^"([^"]*)" can delete tickets for the "([^"]*)" project$/ do |user, proje
   create_permission(user, find_project(project), "delete ticket")
 end
 
+Given /^"([^"]*)" can change states on the "([^"]*)" project$/ do |user, project|
+  create_permission(user, find_project(project), "change state")
+end
+
 When /^I check the "([^"]*)" checkbox for the "([^"]*)" project$/ do |permission, project_name|
   project = Project.find_by_name!(project_name)
   permission = permission.downcase.gsub(" ", "_")
