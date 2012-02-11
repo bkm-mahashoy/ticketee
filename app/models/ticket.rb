@@ -8,6 +8,14 @@ class Ticket < ActiveRecord::Base
 
   has_many :comments
 
+  has_and_belongs_to_many :tags
+
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 10 }
+
+  def tag!(tags)
+    tags.split(" ").each do |tag_name|
+      self.tags << Tag.find_or_create_by_name(tag_name)
+    end
+  end
 end

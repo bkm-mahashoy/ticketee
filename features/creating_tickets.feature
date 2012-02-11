@@ -49,3 +49,13 @@ Feature: Creating Tickets
     And I should see "speed.txt" within "#ticket .assets"
     And I should see "spin.txt" within "#ticket .assets"
     And I should see "gradient.txt" within "#ticket .assets"
+
+  Scenario: Creating a ticket with tags
+    When I fill in "Title" with "Ticket with Tags"
+    And I fill in "Description" with "This ticket contains a few tags."
+    And I fill in "Tags" with "browser visual aesthetics"
+    And I press the "Create Ticket" button
+    Then I should see "Ticket has been successfully created."
+    And I should see "browser" within "#ticket #tags"
+    And I should see "visual" within "#ticket #tags"
+    And I should see "aesthetics" within "#ticket #tags"

@@ -13,6 +13,11 @@
     <%= f.text_area :description %>
   </p>
 
+  <p>
+    <%= label_tag :tags %>
+    <%= text_field_tag :tags, params[:tags] %>
+  </p>
+
   <% file_number = 0 %>
   <div id="files">
     <%= f.fields_for :assets, child_index: file_number do |asset| %>

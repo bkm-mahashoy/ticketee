@@ -16,8 +16,9 @@ class TicketsController < ApplicationController
     @ticket = @project.tickets.build(params[:ticket].merge!(user: current_user))
 
     if @ticket.save
-      flash[:notice] = "Ticket has been successfully created."
-      redirect_to [@project, @ticket]
+      @ticket.tag!(params[:tags])
+      redirect_to [@project, @ticket],
+                  notice: "Ticket has been successfully created."
     else
       flash[:alert] = "Ticket has not been created."
       render action: :new
