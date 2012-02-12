@@ -20,7 +20,7 @@ describe CommentsController do
 
     it "cannot change the ticket state by passing in a state_id" do
       post :create, comment: { text: "Hacked!", state_id: state.id },
-        ticket_id: ticket.id
+        tags: "", ticket_id: ticket.id
       ticket.reload
       ticket.state.should == nil
     end
