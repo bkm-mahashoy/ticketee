@@ -18,6 +18,10 @@ Given /^"([^"]*)" can change states on the "([^"]*)" project$/ do |user, project
   create_permission(user, find_project(project), "change state")
 end
 
+Given /^"([^"]*)" can tag the "([^"]*)" project$/ do |user, project|
+  create_permission(user, find_project(project), "tag")
+end
+
 When /^I check the "([^"]*)" checkbox for the "([^"]*)" project$/ do |permission, project_name|
   project = Project.find_by_name!(project_name)
   permission = permission.downcase.gsub(" ", "_")

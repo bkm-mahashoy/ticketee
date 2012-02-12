@@ -59,6 +59,22 @@ describe TicketsController do
         response.should redirect_to(project)
         flash[:alert].should eql("You cannot delete tickets for this project.")
       end
+
+      context "with permission to create tickets for the project" do
+
+        before do
+          Permission.create!(user: user, thing: project, action: "create ticket")
+        end
+
+        it "cannot tag tickets without permission" do
+          post :create,
+            ticket: { title: "Tag Ticket", description: "New tag ticket" },
+            project_id: project.id, tags: "no tags here"
+
+          Ticket.last.tags.should be_empty
+        end
+      end
     end
   end
 end
+

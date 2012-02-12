@@ -12,7 +12,7 @@ describe CommentsController do
 
   let(:state) { State.create!(name: "New") }
 
-  context "a user without permission to change the ticket state" do
+  context "a user without permission (change ticket state, tag)" do
 
     before do
       sign_in(:user, user)
@@ -23,6 +23,13 @@ describe CommentsController do
         tags: "", ticket_id: ticket.id
       ticket.reload
       ticket.state.should == nil
+    end
+
+    it "cannot tag a ticket" do
+      post :create, comment: { text: "Comment Tag" }, tags: "one two",
+        ticket_id: ticket.id
+      ticket.reload
+      ticket.tags.should be_empty
     end
   end
 end
