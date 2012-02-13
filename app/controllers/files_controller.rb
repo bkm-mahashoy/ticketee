@@ -13,7 +13,7 @@ class FilesController < ApplicationController
   def show
     asset = Asset.find(params[:id])
 
-    if can?(:view, asset.ticket.project)
+    if can?(:view, asset.ticket.project) || current_user.admin?
       send_file asset.asset.path, filename: asset.asset_file_name,
                                   content_type: asset.asset_content_type
     else
