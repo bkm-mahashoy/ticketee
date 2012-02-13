@@ -28,6 +28,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @tickets = @project.tickets
+
     respond_to do |format|
       format.html
       format.json { render json: @project }

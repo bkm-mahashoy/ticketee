@@ -7,6 +7,7 @@ gem 'dynamic_form'
 gem 'devise'
 gem 'cancan'
 gem 'paperclip'
+gem 'searcher'
 
 # gem 'ruby-debug19x', :require => 'ruby-debug'
 
