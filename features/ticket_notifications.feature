@@ -29,3 +29,25 @@ Feature: Ticket Notifications
     And they should see "[ticketee] TextMate 2 - Release date" in the email subject
     When they follow "view this ticket online here." in the email
     Then I should see "Release date" within "#ticket h3"
+
+  Scenario: Comment authors are automatically subscribed to a ticket.
+    When I follow the "TextMate 2" link
+    And I follow the "Release date" link
+    And I fill in "Text" with "Is it out yet?"
+    And I press the "Create Comment" button
+    Then I should see the "Comment has been successfully created." message
+
+    When I follow the "Sign Out" link
+
+    Given a clear email queue
+    Given I am signed in as "alice@ticketee.com"
+
+    When I follow the "TextMate 2" link
+    And I follow the "Release date" link
+    And I fill in "Text" with "Not yet!"
+    And I press the "Create Comment" button
+    Then I should see the "Comment has been successfully created." message
+    And "bob@ticketee.com" should receive an email
+    When "bob@ticketee.com" opens the email
+    Then they should see "Not yet!" in the email body
+    And "alice@ticketee.com" should have no emails
