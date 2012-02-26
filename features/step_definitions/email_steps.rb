@@ -39,10 +39,6 @@ World(EmailHelpers)
 # Reset the e-mail queue within a scenario.
 # This is done automatically before each scenario.
 #
-Given /^the email queue is clear$/ do
-  reset_mailer
-end
-
 Given /^(?:a clear email queue|no emails have been sent)$/ do
   reset_mailer
 end

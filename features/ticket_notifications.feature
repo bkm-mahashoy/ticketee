@@ -4,7 +4,7 @@ Feature: Ticket Notifications
       | email              | password |
       | alice@ticketee.com | password |
       | bob@ticketee.com   | password |
-    And the email queue is clear
+    And a clear email queue
     And there is a project called "TextMate 2"
     And "alice@ticketee.com" can view the "TextMate 2" project
     And "bob@ticketee.com" can view the "TextMate 2" project
@@ -23,6 +23,9 @@ Feature: Ticket Notifications
     Then "alice@ticketee.com" should receive an email
     When "alice@ticketee.com" opens the email
     Then they should see "updated the Release date ticket" in the email body
+    And the email should contain 2 parts
+    And there should be a part with content type "text/plain"
+    And there should be a part with content type "text/html"
     And they should see "[ticketee] TextMate 2 - Release date" in the email subject
-    When they click the first link in the email
+    When they follow "view this ticket online here." in the email
     Then I should see "Release date" within "#ticket h3"
