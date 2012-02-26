@@ -15,6 +15,10 @@ class Ticket < ActiveRecord::Base
   has_many :comments
 
   has_and_belongs_to_many :tags
+  has_and_belongs_to_many :watchers, join_table: :ticket_watchers,
+                          class_name: "User"
+
+  after_create :creator_watches_this_ticket
 
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 10 }
@@ -23,5 +27,11 @@ class Ticket < ActiveRecord::Base
     tags.split(" ").each do |tag_name|
       self.tags << Tag.find_or_create_by_name(tag_name)
     end
+  end
+
+  private
+
+  def creator_watches_this_ticket
+    self.watchers << user
   end
 end
