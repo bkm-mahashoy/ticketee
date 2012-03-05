@@ -11,4 +11,14 @@ module TicketsHelper
       end
     end
   end
+
+  def toggle_watching_ticket_button
+    if @ticket.watchers.include?(current_user)
+      button_text = "Stop watching this ticket"
+    else
+      button_text = "Start watching this ticket"
+    end
+
+    button_to button_text, watch_project_ticket_path(@ticket.project, @ticket)
+  end
 end

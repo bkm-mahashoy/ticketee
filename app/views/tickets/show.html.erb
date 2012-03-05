@@ -31,6 +31,20 @@
   <% end %>
 </div>
 
+<div id="watchers">
+  <%= toggle_watching_ticket_button %>
+  <% if @ticket.watchers.exists? %>
+    <h5>Watchers</h5>
+    <ul>
+      <% @ticket.watchers.each do |watcher| %>
+        <li><%= watcher %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <small>There are no watchers for this ticket.</small>
+  <% end %>
+</div>
+
 <div id="comments">
   <% if @ticket.comments.exists? %>
     <h5>Comments</h5>

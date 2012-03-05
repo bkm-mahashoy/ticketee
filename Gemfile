@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.1'
+gem 'rails', '3.2.2'
 gem 'sqlite3'
 gem 'jquery-rails'
 gem 'dynamic_form'
 gem 'devise'
 gem 'cancan'
-gem 'paperclip'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem 'searcher'
 
 # gem 'ruby-debug19x', :require => 'ruby-debug'
